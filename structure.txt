@@ -1,0 +1,42 @@
+project-root/
+│
+├── config/
+│   └── database.js         # Database configuration
+│
+├── controllers/
+│   ├── homeController.js
+│   └── userController.js
+│
+├── models/
+│   └── User.js             # Mongoose model
+│
+├── public/
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+├── routes/
+│   ├── index.js            # Main router
+│   └── users.js            # User-related routes
+│
+├── views/
+│   ├── layouts/
+│   │   └── main.ejs        # Main layout template
+│   ├── partials/
+│   │   ├── header.ejs
+│   │   └── footer.ejs
+│   ├── home.ejs
+│   └── user/
+│       ├── login.ejs
+│       └── profile.ejs
+│
+├── middleware/
+│   └── auth.js             # Authentication middleware
+│
+├── utils/
+│   └── helpers.js          # Helper functions
+│
+├── app.js                  # Express app setup
+├── server.js               # Server entry point
+├── package.json
+└── .env                    # Environment variables (don't commit this!)

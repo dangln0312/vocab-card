@@ -1,0 +1,20 @@
+{{#if vocabs}}
+{{#each vocabs}}
+    <div class="vocab-card">
+        <tr>
+            <td><button type="submit">Edit</button></td>
+            <td action="/cards/{{_id}}" method="DELETE"><button type="submit">Delete</button></td>
+        </tr>
+        
+        <div class="word">{{word}}</div>
+        <div class="definition">
+            <i>Definition:</i> {{definition}}
+        </div>
+        <div class="example">
+            <i>Example:</i> {{example}}
+        </div>
+    </div>
+{{/each}}
+{{else}}
+    <p>You have not created any vocab</p>
+{{/if}}
