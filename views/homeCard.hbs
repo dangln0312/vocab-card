@@ -1,20 +1,25 @@
 {{#if vocabs}}
 {{#each vocabs}}
-    <div class="vocab-card">
-        <tr>
-            <td><button type="submit">Edit</button></td>
-            <td action="/cards/{{_id}}" method="DELETE"><button type="submit">Delete</button></td>
-        </tr>
-        
-        <div class="word">{{word}}</div>
-        <div class="definition">
-            <i>Definition:</i> {{definition}}
-        </div>
-        <div class="example">
-            <i>Example:</i> {{example}}
-        </div>
+<div class="vocab-card">
+    <tr>
+        <td><a href="/cards/edit/{{_id}}"><button type="submit">Edit</button></a></td>
+        <td>
+            <form action="/cards/{{_id}}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+
+    <div class="word">{{word}}</div>
+    <div class="definition">
+        <i>Definition:</i> {{definition}}
     </div>
+    <div class="example">
+        <i>Example:</i> {{example}}
+    </div>
+</div>
 {{/each}}
 {{else}}
-    <p>You have not created any vocab</p>
+<p>You have not created any vocab</p>
 {{/if}}

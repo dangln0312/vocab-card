@@ -1,0 +1,18 @@
+<div class="add-vocab-form">
+    <h2>Add New Vocabulary</h2>
+    <form action="/cards" method="POST">
+        <div class="form-group">
+            <label for="word">Word:</label>
+            <input type="text" id="word" name="word" required>
+        </div>
+        <div class="form-group">
+            <label for="definition">Definition:</label>
+            <textarea id="definition" name="definition" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="example">Example:</label>
+            <textarea id="example" name="example" required></textarea>
+        </div>
+        <button type="submit">Add Vocabulary</button>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+<div class="add-vocab-form">
+    <h2>Edit Vocabulary</h2>
+    <form action="/cards/{{vocab._id}}" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+            <label for="word">Word:</label>
+            <input type="text" id="word" name="word" value="{{vocab.word}}" required>
+        </div>
+        <div class="form-group">
+            <label for="definition">Definition:</label>
+            <textarea id="definition" name="definition" value="{{vocab.definition}}" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="example">Example:</label>
+            <textarea id="example" name="example" value="{{vocab.example}}" required></textarea>
+        </div>
+        <button type="submit">Edit Vocabulary</button>
+    </form>
+</div>

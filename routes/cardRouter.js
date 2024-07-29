@@ -17,7 +17,7 @@ cardRouter.get('/', async (req, res) => {
   }
 })
 
-// POST: add new vocab 
+// POST: add a new vocab 
 cardRouter.post('/', async (req, res) => {
   const {word, definition, example} = req.body;
   try {
@@ -30,12 +30,41 @@ cardRouter.post('/', async (req, res) => {
   }
 })
 
-// Delete
+// Delete: delete a vocab 
 cardRouter.delete('/:id', async(req, res) => {
   console.log("Delete the card");
   try {
     await Vocab.deleteOne({_id: req.params.id});
     res.redirect('/cards');
+  } catch (err) {
+    console.error(err);
+  }
+})
+
+// Show add page
+cardRouter.get('/add', (req, res) => {
+  res.render('cards/add')
+})
+
+// Show edit page 
+cardRouter.get('/edit/:id', async(req, res) => {
+  try {
+    const vocab = await Vocab.findOne({ _id: req.params.id}).lean();
+    res.render('cards/edit', {
+      vocab,
+    })
+  } catch (err) {
+    console.error(err);
+  }
+})
+
+// Update vocabulary
+cardRouter.put('/:id', async(req, res) => {
+  try {
+    await Vocab.findOneAndUpdate({_id: req.params.id}, req.body, {
+      new: true,
+      runValidators: true
+    })
   } catch (err) {
     console.error(err);
   }
