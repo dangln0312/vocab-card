@@ -10,10 +10,10 @@ cardRouter.get('/', async (req, res) => {
     const vocabs = await Vocab.find().lean();
     res.render("homeCard", {
       vocabs
-    })
+    });
 
   } catch (err){
-    console.error(err)
+    console.error(err);
   }
 })
 
@@ -21,14 +21,24 @@ cardRouter.get('/', async (req, res) => {
 cardRouter.post('/', async (req, res) => {
   const {word, definition, example} = req.body;
   try {
-    const newVocab = new Vocab({word, definition, example})
-    const savedVocab = await newVocab.save()
-    console.log(req.body)
-    res.redirect('/cards')
+    const newVocab = new Vocab({word, definition, example});
+    await newVocab.save();
+    console.log(req.body);
+    res.redirect('/cards');
   } catch (err){
     console.error(err);
   }
 })
 
+// Delete
+cardRouter.delete('/:id', async(req, res) => {
+  console.log("Delete the card");
+  try {
+    await Vocab.deleteOne({_id: req.params.id});
+    res.redirect('/cards');
+  } catch (err) {
+    console.error(err);
+  }
+})
 
 export default cardRouter;
