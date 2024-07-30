@@ -65,6 +65,8 @@ cardRouter.put('/:id', async(req, res) => {
       new: true,
       runValidators: true
     })
+    console.log("Update the vocab card")
+    res.redirect('/cards')
   } catch (err) {
     console.error(err);
   }
